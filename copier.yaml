@@ -1,0 +1,17 @@
+# copier.yaml
+dest:
+  default: "{{ cookiecutter.project_slug }}"
+
+vars:
+  project_slug:
+    type: str
+    default: "mein_projekt"
+    help: "Der Name des Projekts"
+  author_name:
+    type: str
+    default: "Dein Name"
+    help: "Der Name des Autors"
+  author_email:
+    type: str
+    default: "deine.email@beispiel.de"
+    help: "Die E-Mail des Autors"
