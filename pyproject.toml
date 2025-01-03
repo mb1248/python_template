@@ -21,6 +21,10 @@ classifiers = [
     "Programming Language :: Python :: 3.11"
 ]
 
+[project.urls]
+Documentation = "https://python_template.readthedocs.io"
+Repository = "https://github.com/mb1248/python_template"
+
 [project.scripts]
 greet = "python_template.__main__:cli"
 
