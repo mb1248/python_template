@@ -20,14 +20,14 @@ def test_greet_default(runner: CliRunner) -> None:
     """Test the CLI with the default name."""
     result = runner.invoke(cli)
     assert result.exit_code == 0
-    assert "Hallo, Welt!" in result.output
+    assert "Hello, World!" in result.output
 
 
 def test_greet_with_name(runner: CliRunner) -> None:
     """Test the CLI with a specified name."""
     result = runner.invoke(cli, ["--name", "Max"])
     assert result.exit_code == 0
-    assert "Hallo, Max!" in result.output
+    assert "Hello, Max!" in result.output
 
 
 def test_help_option(runner: CliRunner) -> None:
@@ -35,4 +35,4 @@ def test_help_option(runner: CliRunner) -> None:
     result = runner.invoke(cli, ["--help"])
     assert result.exit_code == 0
     assert "Usage:" in result.output
-    assert "Begrüßt eine Person mit ihrem Namen." in result.output
+    assert "Greets a person by their name." in result.output

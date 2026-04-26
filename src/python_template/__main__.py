@@ -17,14 +17,14 @@ def get_version() -> str:
 
 
 @click.command(
-    help=f"Begrüßt eine Person mit ihrem Namen. Version {get_version()}",
-    context_settings={"help_option_names": ["-h", "--help"]},  # Ermöglicht -h für Hilfe
+    help=f"Greets a person by their name. Version {get_version()}",
+    context_settings={"help_option_names": ["-h", "--help"]},
 )
 @click.option(
     "-n",
     "--name",
-    default="Welt",
-    help="Der Name der Person, die begrüßt werden soll.",
+    default="World",
+    help="The name of the person to greet.",
 )
 @click.version_option(version=get_version())  # Version hinzufügen
 def cli(name: str) -> None:

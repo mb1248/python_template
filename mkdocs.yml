@@ -1,3 +1,8 @@
-site_name: My Docs
+site_name: "{{ project_name }}"
+site_description: "{{ description }}"
 theme:
   name: material
+  palette:
+    scheme: slate
+nav:
+  - Home: index.md

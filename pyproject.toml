@@ -15,10 +15,10 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11"
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
 
 [project.scripts]
@@ -50,7 +50,7 @@ line-length = 120
 [tool.ruff.lint]
 select = [
     "ARG",
-    "ANN",  # Warnungen für fehlende Typannotationen
+    "ANN",  # Missing type annotations
     "B", # flake8-bugbear
     "C4", # flake8-comprehensions
     "D",   # Missing docstrings (autodoc)
@@ -94,6 +94,8 @@ distribution = true
 [tool.pdm.scripts]
 lint = "ruff check ."
 fmt = "ruff format ."
+fmt-check = "ruff format --check ."
+type-check = "mypy src/"
 docs = "mkdocs serve"
 
 [tool.pdm.version]

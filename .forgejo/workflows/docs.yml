@@ -1,0 +1,74 @@
+name: Docs
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-docs:
+    name: Build documentation
+    runs-on: docker
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Install PDM
+        run: pip install pdm
+
+      - name: Install docs dependencies
+        run: pdm install -G docs
+
+      - name: Build docs
+        run: pdm run mkdocs build --strict
+
+      - name: Upload docs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: site/
+
+  deploy-pages:
+    name: Deploy to pages branch
+    runs-on: docker
+    needs: build-docs
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Install PDM
+        run: pip install pdm
+
+      - name: Install docs dependencies
+        run: pdm install -G docs
+
+      - name: Build docs
+        run: pdm run mkdocs build --strict
+
+      - name: Publish to gh-pages branch
+        env:
+          GIT_AUTHOR_NAME: forgejo-actions
+          GIT_AUTHOR_EMAIL: actions@local
+          GIT_COMMITTER_NAME: forgejo-actions
+          GIT_COMMITTER_EMAIL: actions@local
+        run: |
+          set -euo pipefail
+          git switch --orphan gh-pages
+          git rm -rf . >/dev/null 2>&1 || true
+          cp -R site/. .
+          touch .nojekyll
+          git add .
+          git commit -m "docs: publish site" || exit 0
+          git push --force origin gh-pages

@@ -1,17 +1,19 @@
-# Welcome to MkDocs
+# {{ project_name }}
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+{{ description }}
 
-## Commands
+## Installation
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+```bash
+pip install {{ project_name }}
+```
 
-## Project layout
+## Usage
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+```bash
+{{ module_name }} --help
+```
+
+## Development
+
+See the [README](https://your-repo-url) for development setup instructions.

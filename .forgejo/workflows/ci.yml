@@ -1,0 +1,78 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  format:
+    name: Format check
+    runs-on: docker
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Install PDM
+        run: pip install pdm
+
+      - name: Install lint dependencies
+        run: pdm install -G lint
+
+      - name: Check formatting
+        run: pdm run fmt-check
+
+  lint:
+    name: Lint & type-check
+    runs-on: docker
+    needs: format
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Install PDM
+        run: pip install pdm
+
+      - name: Install dependencies
+        run: pdm install -G lint
+
+      - name: Lint
+        run: pdm run lint
+
+      - name: Type-check
+        run: pdm run type-check
+
+  test:
+    name: Test (Python ${{ matrix.python-version }})
+    runs-on: docker
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install PDM
+        run: pip install pdm
+
+      - name: Install dependencies
+        run: pdm install -G pytest
+
+      - name: Run tests
+        run: pdm run pytest --cov=python_template --cov-report=term-missing tests/
+
+      - name: Upload coverage report
+        if: always()
+        run: echo "Coverage reported above (non-blocking)"
