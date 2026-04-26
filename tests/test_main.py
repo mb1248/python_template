@@ -1,9 +1,11 @@
 """Test for __main__."""
 
+import importlib
+
 import pytest
 from click.testing import CliRunner
 
-from python_template.__main__ import cli
+cli = importlib.import_module("[[ module_name ]].__main__").cli
 
 
 @pytest.fixture

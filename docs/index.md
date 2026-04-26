@@ -1,17 +1,17 @@
-# {{ project_name }}
+# [[ project_name ]]
 
-{{ description }}
+[[ description ]]
 
 ## Installation
 
 ```bash
-pip install {{ project_name }}
+pip install [[ project_name ]]
 ```
 
 ## Usage
 
 ```bash
-{{ module_name }} --help
+[[ project_name ]] --help
 ```
 
 ## Development

@@ -1,6 +1,30 @@
 # copier.yaml
 # https://copier.readthedocs.io/en/stable/
 
+_templates_suffix: ""
+_envops:
+  variable_start_string: "[["
+  variable_end_string: "]]"
+_exclude:
+  - .git
+  - .git/**
+  - .vscode
+  - .vscode/**
+  - .venv
+  - .venv/**
+  - site
+  - site/**
+  - __pycache__
+  - __pycache__/**
+  - .pytest_cache
+  - .pytest_cache/**
+  - .ruff_cache
+  - .ruff_cache/**
+  - .mypy_cache
+  - .mypy_cache/**
+  - copier.yaml
+  - pdm.lock
+
 project_name:
   type: str
   help: "Project name (used as the PyPI package name, e.g. my-project)"
@@ -9,7 +33,7 @@ project_name:
 module_name:
   type: str
   help: "Python module/package name (e.g. my_project)"
-  default: "{{ project_name | lower | replace('-', '_') | replace(' ', '_') }}"
+  default: "[[ project_name | lower | replace('-', '_') | replace(' ', '_') ]]"
 
 description:
   type: str
@@ -19,12 +43,12 @@ description:
 author_name:
   type: str
   help: "Author full name"
-  default: "Marco Berghoff"
+  default: "Your Name"
 
 author_email:
   type: str
   help: "Author email address"
-  default: "mb1248@gmail.com"
+  default: "your.email@example.com"
 
 python_version:
   type: str

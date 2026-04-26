@@ -1,6 +1,8 @@
 """Unit tests greet."""
 
-from python_template.greet import greet
+import importlib
+
+greet = importlib.import_module("[[ module_name ]].greet").greet
 
 
 def test_greet() -> None:

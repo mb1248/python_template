@@ -40,7 +40,7 @@ test:
 	pdm run pytest tests/
 
 test-cov:
-	pdm run pytest --cov=python_template --cov-report=term-missing tests/
+	pdm run pytest --cov=[[ module_name ]] --cov-report=term-missing tests/
 
 docs-serve:
 	pdm run docs

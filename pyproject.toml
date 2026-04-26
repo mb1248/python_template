@@ -1,13 +1,13 @@
 # https://rudeigerc.dev/posts/structuring-a-python-project/
 [project]
-name = "python-template"
+name = "[[ project_name ]]"
 dynamic = ["version"]
-description = "Default template for PDM package"
+description = "[[ description ]]"
 authors = [
-    {name = "{{author_name}}", email = "{{author_email}}"},
+    {name = "[[ author_name ]]", email = "[[ author_email ]]"},
 ]
 dependencies = ["click"]
-requires-python = ">=3.11"
+requires-python = ">=[[ python_version ]]"
 readme = "README.md"
 license = {text = "MIT"}
 classifiers = [
@@ -22,7 +22,7 @@ classifiers = [
 ]
 
 [project.scripts]
-{{module_name}} = "{{module_name}}.__main__:cli"
+"[[ project_name ]]" = "[[ module_name ]].__main__:cli"
 
 [build-system]
 requires = ["pdm-backend"]
@@ -100,6 +100,7 @@ docs = "mkdocs serve"
 
 [tool.pdm.version]
 source = "scm"
+fallback_version = "0.1.0"
 
 [tool.mypy]
 strict = true

@@ -13,7 +13,7 @@ def get_version() -> str:
     Returns:
         str: The version.
     """
-    return importlib.metadata.version("python_template")
+    return importlib.metadata.version("[[ project_name ]]")
 
 
 @click.command(
@@ -26,7 +26,7 @@ def get_version() -> str:
     default="World",
     help="The name of the person to greet.",
 )
-@click.version_option(version=get_version())  # Version hinzufügen
+@click.version_option(version=get_version())
 def cli(name: str) -> None:
     """Commandline interface wrapper.
 

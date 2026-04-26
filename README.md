@@ -1,4 +1,4 @@
-# python-template
+# [[ project_name ]]
 
 A modern Python project template powered by [Copier](https://copier.readthedocs.io/), [PDM](https://pdm-project.org/), and [Ruff](https://docs.astral.sh/ruff/).
 
@@ -13,7 +13,7 @@ A modern Python project template powered by [Copier](https://copier.readthedocs.
 
 ## Requirements
 
-- Python >= 3.11
+- Python >= [[ python_version ]]
 - [PDM](https://pdm-project.org/) — `pip install pdm`
 
 ## Development setup
@@ -35,7 +35,7 @@ pdm run lint
 pdm run type-check
 
 # Run tests with coverage
-pdm run pytest --cov=python_template --cov-report=term-missing tests/
+pdm run pytest --cov=[[ module_name ]] --cov-report=term-missing tests/
 
 # Serve docs locally
 pdm run docs
@@ -71,7 +71,7 @@ You will be prompted for:
 - `module_name` — Python package name (auto-derived, e.g. `my_project`)
 - `description` — Short project description
 - `author_name` / `author_email`
-- `python_version` — Minimum Python version (3.11 / 3.12 / 3.13)
+- `python_version` — Minimum Python version (3.11 / 3.12 / 3.13 / 3.14)
 
 Keep `.copier-answers.yml` committed in generated projects. It stores the chosen template answers and enables `copier update` later.
 
