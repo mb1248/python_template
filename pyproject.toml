@@ -4,7 +4,7 @@ name = "python-template"
 dynamic = ["version"]
 description = "Default template for PDM package"
 authors = [
-    {name = "Marco Berghoff", email = "marco.berghoff@kit.edu"},
+    {name = "{{author_name}}", email = "{{author_email}}"},
 ]
 dependencies = ["click"]
 requires-python = ">=3.11"
@@ -22,7 +22,7 @@ classifiers = [
 ]
 
 [project.scripts]
-greet = "python_template.__main__:cli"
+{{module_name}} = "{{module_name}}.__main__:cli"
 
 [build-system]
 requires = ["pdm-backend"]
@@ -66,7 +66,7 @@ extend-select = ["DOC"]
 preview = true
 ignore = []
 
-[tool.ruff.lint.per-file-ignores] 
+[tool.ruff.lint.per-file-ignores]
 "tests/**" = ["PLC2701"]
 
 [tool.ruff.lint.pydocstyle]

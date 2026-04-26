@@ -19,12 +19,12 @@ description:
 author_name:
   type: str
   help: "Author full name"
-  default: "Your Name"
+  default: "Marco Berghoff"
 
 author_email:
   type: str
   help: "Author email address"
-  default: "your.email@example.com"
+  default: "mb1248@gmail.com"
 
 python_version:
   type: str
@@ -34,3 +34,4 @@ python_version:
     - "3.11"
     - "3.12"
     - "3.13"
+    - "3.14"
