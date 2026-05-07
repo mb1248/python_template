@@ -21,6 +21,10 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
 ]
 
+[project.urls]
+Documentation = "https://python_template.readthedocs.io"
+Repository = "https://github.com/mb1248/python_template"
+
 [project.scripts]
 "[[ project_name ]]" = "[[ module_name ]].__main__:cli"
 
